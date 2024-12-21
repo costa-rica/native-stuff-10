@@ -34,3 +34,7 @@ Verify that one screen can have a view with one set of gestures, then overlay an
 ## Gesture02.js
 
 Create a video view with a timeline. The Video will have a gesture set, the timeline will have a gesture set that impacts the video playback. The timeline will be sitting on top of the video.
+
+## Gesture03.js and subcomponents/Timeline.js
+
+All the good stuff from Gesture02.js, but now we separate the timeline into a component called Timeline and all the functionality remains. Width of timeline is hanlded by a property that is passed called timelineWidth, which is a percentage.

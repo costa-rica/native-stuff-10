@@ -52,6 +52,15 @@ export default function Home({ navigation }) {
           </TouchableOpacity>
           <Text>↳ gesture ...</Text>
         </View>
+        <View style={styles.vwNavGroup}>
+          <TouchableOpacity
+            style={styles.touchOpNav}
+            onPress={() => navigation.navigate("Gesture03")}
+          >
+            <Text style={styles.txtTouchOpNav}>Gesture in Gest w Video</Text>
+          </TouchableOpacity>
+          <Text>↳ gesture refactor 02 with component "Timeline" element </Text>
+        </View>
       </View>
     </View>
   );

@@ -11,6 +11,7 @@ import PlayVideoWithTimeLine from "./screens/PlayVideo/PlayVideoWithTimeline";
 import PlayVideoWithTimeLine02 from "./screens/PlayVideo/PlayVideoWithTimeline02";
 import Gesture01 from "./screens/Gestures01";
 import Gesture02 from "./screens/Gestures02";
+import Gesture03 from "./screens/Gestures03";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -35,6 +36,7 @@ export default function App() {
           />
           <Stack.Screen name="Gesture01" component={Gesture01} />
           <Stack.Screen name="Gesture02" component={Gesture02} />
+          <Stack.Screen name="Gesture03" component={Gesture03} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
