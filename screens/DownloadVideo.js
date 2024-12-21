@@ -13,6 +13,7 @@ import * as FileSystem from "expo-file-system";
 export default function Home({ navigation }) {
   const [isDownloadModalVisible, setIsDownloadModalVisible] = useState(false);
   const [downloadStatuses, setDownloadStatuses] = useState({});
+  const [downloadProgress, setDownloadProgress] = useState("");
 
   useEffect(() => {
     checkDownloadStatus();
@@ -66,7 +67,7 @@ export default function Home({ navigation }) {
     }
   };
 
-  const pressBtnVideo = async () => {
+  const pressBtnVideo = async (pageName) => {
     console.log("pressed pressBtnVideo");
 
     if (!downloadStatuses[videoFilename]) {
@@ -83,7 +84,8 @@ export default function Home({ navigation }) {
     }
 
     console.log("go to Scripting screen ....");
-    navigation.navigate("PlayVideo", {
+
+    navigation.navigate(pageName, {
       matchName: "elem.matchName",
       videoUri: `${FileSystem.documentDirectory}${videoFilename}`,
     });
@@ -93,14 +95,33 @@ export default function Home({ navigation }) {
     <TemplateView navigation={navigation}>
       <View style={styles.container}>
         <View style={styles.vwTitle}>
-          <Text style={styles.txtTitle}>Home Screen</Text>
+          <Text style={styles.txtTitle}>Pick Screen To View Video</Text>
         </View>
-        <TouchableOpacity
-          style={styles.touchOpNav}
-          onPress={() => pressBtnVideo()}
-        >
-          <Text style={styles.txtTouchOpNav}>Download video</Text>
-        </TouchableOpacity>
+        <View style={styles.vwNavGroup}>
+          <TouchableOpacity
+            style={styles.touchOpNav}
+            onPress={() => pressBtnVideo("PlayVideo")}
+          >
+            <Text style={styles.txtTouchOpNav}>PlayVideo</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.vwNavGroup}>
+          <TouchableOpacity
+            style={styles.touchOpNav}
+            onPress={() => pressBtnVideo("PlayVideoWithTimeLine")}
+          >
+            <Text style={styles.txtTouchOpNav}>PlayVideoWithTimeLine</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.vwNavGroup}>
+          <TouchableOpacity
+            style={styles.touchOpNav}
+            onPress={() => pressBtnVideo("PlayVideoWithTimeLine02")}
+          >
+            <Text style={styles.txtTouchOpNav}>PlayVideoWithTimeLine02</Text>
+          </TouchableOpacity>
+          <Text>↳ corrects clicking on bubbles on timeline</Text>
+        </View>
       </View>
     </TemplateView>
   );
@@ -121,16 +142,21 @@ const styles = StyleSheet.create({
   vwButtons: {
     gap: 5,
   },
+  vwNavGroup: {
+    borderBottomWidth: 1,
+    paddingBottom: 1,
+    marginBottom: 2,
+  },
   touchOpNav: {
     backgroundColor: "black",
     padding: 5,
-    width: 200,
+    width: 250,
     borderRadius: 12,
-    // justifyContent: "center",
+    marginBottom: 1,
   },
   txtTouchOpNav: {
     color: "gray",
-
     alignSelf: "center",
+    fontSize: 20,
   },
 });

@@ -7,30 +7,33 @@ export default function Home({ navigation }) {
         <Text style={styles.txtTitle}>Home Screen</Text>
       </View>
       <View style={styles.vwButtons}>
-        <TouchableOpacity
-          style={styles.touchOpNav}
-          onPress={() => navigation.navigate("SetButtonDown")}
-        >
-          <Text style={styles.txtTouchOpNav}>SetButtonDown</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.touchOpNav}
-          onPress={() => navigation.navigate("DownloadVideo")}
-        >
-          <Text style={styles.txtTouchOpNav}>Download Video</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.touchOpNav}
-          onPress={() => navigation.navigate("PlayVideoWithAV")}
-        >
-          <Text style={styles.txtTouchOpNav}>PlayVideoWithAV</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.touchOpNav}
-          onPress={() => navigation.navigate("Play")}
-        >
-          <Text style={styles.txtTouchOpNav}>Play - stackoverflow</Text>
-        </TouchableOpacity>
+        <View style={styles.vwNavGroup}>
+          <TouchableOpacity
+            style={styles.touchOpNav}
+            onPress={() => navigation.navigate("SetButtonDown")}
+          >
+            <Text style={styles.txtTouchOpNav}>SetButtonDown</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.vwNavGroup}>
+          <TouchableOpacity
+            style={styles.touchOpNav}
+            onPress={() => navigation.navigate("DownloadVideo")}
+          >
+            <Text style={styles.txtTouchOpNav}>Download Video</Text>
+          </TouchableOpacity>
+          <Text>↳ Main thread of interest 👆</Text>
+        </View>
+        <View style={styles.vwNavGroup}>
+          <TouchableOpacity
+            style={styles.touchOpNav}
+            onPress={() => navigation.navigate("Play")}
+          >
+            <Text style={styles.txtTouchOpNav}>Play - stackoverflow</Text>
+          </TouchableOpacity>
+          <Text>↳ Used to answer the stackoverflow question</Text>
+        </View>
       </View>
     </View>
   );
@@ -51,11 +54,16 @@ const styles = StyleSheet.create({
   vwButtons: {
     gap: 5,
   },
+  vwNavGroup: {
+    borderBottomWidth: 1,
+    paddingBottom: 1,
+  },
   touchOpNav: {
     backgroundColor: "black",
     padding: 5,
     width: 250,
     borderRadius: 12,
+    marginBottom: 1,
   },
   txtTouchOpNav: {
     color: "gray",

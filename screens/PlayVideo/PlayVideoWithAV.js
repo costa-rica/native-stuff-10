@@ -1,3 +1,5 @@
+// This library is deprecated
+
 import {
   StyleSheet,
   Text,
@@ -6,7 +8,7 @@ import {
   Image,
   Dimensions,
 } from "react-native";
-import TemplateView from "./subcomponents/TemplateView";
+import TemplateView from "../subcomponents/TemplateView";
 //   import { useVideoPlayer, VideoView } from "expo-video";
 import { Video, ResizeMode } from "expo-av";
 import { useEvent } from "expo";

@@ -5,9 +5,10 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import Home from "./screens/Home";
 import SetButtonDown from "./screens/SetButtonDown";
 import DownloadVideo from "./screens/DownloadVideo";
-import PlayVideo from "./screens/PlayVideo";
-import PlayVideoWithAV from "./screens/PlayVideoWithAV";
-import Play from "./screens/PlayVideoStackoverflow";
+import PlayVideo from "./screens/PlayVideo/PlayVideo";
+import Play from "./screens/PlayVideo/PlayVideoStackoverflow";
+import PlayVideoWithTimeLine from "./screens/PlayVideo/PlayVideoWithTimeline";
+import PlayVideoWithTimeLine02 from "./screens/PlayVideo/PlayVideoWithTimeline02";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -21,8 +22,15 @@ export default function App() {
           <Stack.Screen name="SetButtonDown" component={SetButtonDown} />
           <Stack.Screen name="DownloadVideo" component={DownloadVideo} />
           <Stack.Screen name="PlayVideo" component={PlayVideo} />
-          <Stack.Screen name="PlayVideoWithAV" component={PlayVideoWithAV} />
           <Stack.Screen name="Play" component={Play} />
+          <Stack.Screen
+            name="PlayVideoWithTimeLine"
+            component={PlayVideoWithTimeLine}
+          />
+          <Stack.Screen
+            name="PlayVideoWithTimeLine02"
+            component={PlayVideoWithTimeLine02}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

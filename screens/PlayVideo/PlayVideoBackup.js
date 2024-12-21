@@ -6,7 +6,7 @@ import {
   Image,
   Dimensions,
 } from "react-native";
-import TemplateView from "./subcomponents/TemplateView";
+import TemplateView from "../subcomponents/TemplateView";
 import { useVideoPlayer, VideoView } from "expo-video";
 import { useEvent } from "expo";
 import { useState, useEffect, useRef } from "react";
@@ -24,10 +24,31 @@ export default function PlayVideo({ navigation, route }) {
     player.timeUpdateEventInterval = 1; //< --- this is what you're missing
   });
   useEventListener(player, "timeUpdate", (payload) => {
-    //<--- just play payload in the parentheses
     setCurrentTime(payload.currentTime);
     console.log("Time updated");
   });
+  // const state = player.state;
+  // const videoViewRef = useRef(null);
+
+  // player.addListener("timeUpdate", (payload) => {
+  //   console.log("time updated");
+  //   setCurrentTime(payload.currentTime);
+  // });
+
+  useEffect(() => {
+    console.log("- in useEffect");
+
+    // const subscription2 = player.addListener("timeUpdate", (payload) => {
+    //   //   setIsPlaying(isPlaying);
+    //   setCurrentTime(payload.currentTime);
+    //   console.log("timeUpdate");
+    // });
+
+    // return () => {
+    //   // subscription.remove();
+    //   subscription2.remove();
+    // };
+  }, []);
 
   // Dynamic Styles
   const videoViewStyle = {
