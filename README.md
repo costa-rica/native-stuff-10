@@ -26,3 +26,11 @@ Create a timeline with bubbles for special points in video. Make them like butto
 Create a timeline with bubbles for special points in video. Make them like buttons.
 
 - Corrects when clicking on bubbles to not start at the beginning
+
+## Gesture01.js
+
+Verify that one screen can have a view with one set of gestures, then overlay an other view on part of the view with a different set of gestures.
+
+## Gesture02.js
+
+Create a video view with a timeline. The Video will have a gesture set, the timeline will have a gesture set that impacts the video playback. The timeline will be sitting on top of the video.

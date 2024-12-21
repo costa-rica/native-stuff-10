@@ -34,6 +34,24 @@ export default function Home({ navigation }) {
           </TouchableOpacity>
           <Text>↳ Used to answer the stackoverflow question</Text>
         </View>
+        <View style={styles.vwNavGroup}>
+          <TouchableOpacity
+            style={styles.touchOpNav}
+            onPress={() => navigation.navigate("Gesture01")}
+          >
+            <Text style={styles.txtTouchOpNav}>Gesture in Gest</Text>
+          </TouchableOpacity>
+          <Text>↳ gesture in gesture w/out bottom gest triggering</Text>
+        </View>
+        <View style={styles.vwNavGroup}>
+          <TouchableOpacity
+            style={styles.touchOpNav}
+            onPress={() => navigation.navigate("Gesture02")}
+          >
+            <Text style={styles.txtTouchOpNav}>Gesture in Gest w Video</Text>
+          </TouchableOpacity>
+          <Text>↳ gesture ...</Text>
+        </View>
       </View>
     </View>
   );

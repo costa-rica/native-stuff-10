@@ -9,6 +9,8 @@ import PlayVideo from "./screens/PlayVideo/PlayVideo";
 import Play from "./screens/PlayVideo/PlayVideoStackoverflow";
 import PlayVideoWithTimeLine from "./screens/PlayVideo/PlayVideoWithTimeline";
 import PlayVideoWithTimeLine02 from "./screens/PlayVideo/PlayVideoWithTimeline02";
+import Gesture01 from "./screens/Gestures01";
+import Gesture02 from "./screens/Gestures02";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -31,6 +33,8 @@ export default function App() {
             name="PlayVideoWithTimeLine02"
             component={PlayVideoWithTimeLine02}
           />
+          <Stack.Screen name="Gesture01" component={Gesture01} />
+          <Stack.Screen name="Gesture02" component={Gesture02} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
