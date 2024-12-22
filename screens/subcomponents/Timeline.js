@@ -14,21 +14,14 @@ import {
   Gesture,
 } from "react-native-gesture-handler";
 
-export default function Timeline({
-  player,
-  videoDuration,
-  currentTime,
-  setCurrentTime,
-  scriptArray,
-  timelineWidth,
-}) {
+export default function Timeline(props) {
   const [timelineLayout, setTimelineLayout] = useState(null);
   const [timelineIncrement, setTimelineIncrement] = useState(null);
 
   const calculateTimelineLength = (event) => {
     const { x, y, width, height } = event.nativeEvent.layout;
     setTimelineLayout({ x, y, width, height });
-    setTimelineIncrement(videoDuration / width);
+    setTimelineIncrement(props.videoDuration / width);
   };
 
   // Tap gesture for Timeline tap
@@ -39,7 +32,7 @@ export default function Timeline({
     const relativeX = event.absoluteX - timelineLayout.x;
     console.log(`timeline POS: ${relativeX * timelineIncrement}`);
     const playerCurrentTimeSet = relativeX * timelineIncrement;
-    player.currentTime = playerCurrentTimeSet;
+    props.player.currentTime = playerCurrentTimeSet;
   });
 
   const gestureSwipeTimeline = Gesture.Pan()
@@ -52,9 +45,9 @@ export default function Timeline({
         timelineLayout.width
       );
       const playerCurrentTimeSet =
-        (relativeX / timelineLayout.width) * videoDuration;
-      setCurrentTime(playerCurrentTimeSet); // Update the progress visually
-      player.currentTime = playerCurrentTimeSet; // Update the video time
+        (relativeX / timelineLayout.width) * props.videoDuration;
+      props.setCurrentTime(playerCurrentTimeSet); // Update the progress visually
+      props.player.currentTime = playerCurrentTimeSet; // Update the video time
     })
     .onEnd(() => {
       console.log("Pan gesture ended");
@@ -68,28 +61,29 @@ export default function Timeline({
     <GestureDetector gesture={combinedTimelineGesture}>
       <View
         key={1}
-        style={[styles.vwTimeline, { width: timelineWidth }]}
+        style={[styles.vwTimeline, { width: props.timelineWidth }]}
         onLayout={calculateTimelineLength}
       >
         <View
           style={[
             styles.vwTimelineProgress,
-            { width: `${(currentTime / videoDuration) * 100}%` },
+            { width: `${(props.currentTime / props.videoDuration) * 100}%` },
           ]}
         />
         <View
           style={[
             styles.vwProgressCircle,
             {
-              left: `${(currentTime / videoDuration) * 100}%`,
+              left: `${(props.currentTime / props.videoDuration) * 100}%`,
               marginLeft: -10, // Adjust for centering
             },
           ]}
         />
-        {scriptArray.map((time, index) => {
-          const position = (time / videoDuration) * 100;
+        {props.scriptArray.map((time, index) => {
+          const position = (time / props.videoDuration) * 100;
           return (
             <View
+              key={index} // Adding a unique key here based on the index
               style={[
                 styles.vwScriptMarker,
                 { left: `${position}%`, marginLeft: -5 },
